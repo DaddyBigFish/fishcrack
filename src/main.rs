@@ -101,18 +101,16 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     if is_spray_mode {
         println!("Now spraying! Attempting all hash algorithms.");
-        valid_hashes.par_iter().flat_map(|hash_type| {
-            dict.par_iter().map(move |line| (hash_type, line))
-        }).find_any(|(hash_type, line)| {
-            if !cracked.load(Ordering::SeqCst) {
-                if let Some(result) = crack(line, hash_type, start_time, &cracked) {
-                    let mut res = results.write().unwrap();
-                    res.push(result);
-                    return true;
-                }
-            }
-            false
-        });
+		valid_hashes.par_iter().for_each(|hash_type| {
+			dict.par_iter().for_each(|line| {
+				if !cracked.load(Ordering::SeqCst) {
+				    if let Some(result) = crack(line, hash_type, start_time, &cracked) {
+				        let mut res = results.write().unwrap();
+				        res.push(result);
+				    }
+				}
+			});
+		});
     } else {
         let hash_type = HASH_NAME.as_str();
         if !valid_hashes.contains(&hash_type) {
