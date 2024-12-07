@@ -8,6 +8,8 @@ repository = "https://github.com/DaddyBigFish/fishcrack.git"
 license = "MIT"
 
 [dependencies]
+crossbeam = "0.8.4"
+num_cpus = "1.16.0"
 digest = "0.10.3"
 instant = "0.1.9"
 lazy_static = "1.4.0"
