@@ -48,6 +48,6 @@ Loaded the wordlist file in 383 millisecs.
 Loaded the wordlist file in 388 millisecs.
 Now spraying! Attempting all hash algorithms.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-💛 Cracked!   🔑 securepassword   ⏳ 28940 millisecs
+💛 Cracked!   🔑 securepassword   ⏳ 7434 millisecs
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
