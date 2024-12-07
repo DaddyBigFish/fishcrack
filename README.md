@@ -37,9 +37,11 @@ chmod +x /usr/local/bin/fishcrack
 fishcrack ~/rockyou SHA3-512 48f4892c4227b737630fe6af9e69592f999849d2c5bfb0f02950c3040605245292880bdf169fcc3fb147a808435d6dbbb6d124c2a4c1242602230c00a20816bc
 🐠 fishcrack v0.1
 Loaded the wordlist file in 383 millisecs.
--------------------------------------------------------
-💛 Cracked! 🔑 securepassword ⏳ 1651 millisecs
--------------------------------------------------------
+-------------------------
+💛 Cracked!
+🔑 securepassword
+⏳ 1651 millisecs
+-------------------------
 ```
 #### --spray
 ```
@@ -47,7 +49,9 @@ Loaded the wordlist file in 383 millisecs.
 🐠 fishcrack v0.1
 Loaded the wordlist file in 388 millisecs.
 Now spraying! Attempting all hash algorithms.
--------------------------------------------------------
-💛 Cracked! 🔑 securepassword ⏳ 28940 millisecs
--------------------------------------------------------
+-------------------------
+💛 Cracked!
+🔑 securepassword
+⏳ 28940 millisecs
+-------------------------
 ```
