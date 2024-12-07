@@ -1,4 +1,4 @@
-## Supports the folllowing hashes:
+## Supported hashes
 ```
     let valid_hashes = vec![
     	"MD2",
@@ -18,4 +18,13 @@
     	"SHA3-384",
     	"SHA3-512"
     ];
+```
+
+## Installation
+```
+git clone https://github.com/DaddyBigFish/fishcrack.git ~/.git/fishcrack
+cd ~/.git/fishcrack
+cargo build --release
+sudo ln -sf $(realpath ~/.git/ruo/target/release/ruo) /usr/local/bin/fishcrack
+chmod +x /usr/local/bin/fishcrack
 ```
