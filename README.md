@@ -34,23 +34,20 @@ chmod +x /usr/local/bin/fishcrack
 ## Usage
 #### <hash_type>
 ```
-fishcrack ~/rockyou MD5 f25a2fc72690b780b2a14e140ef6a9e0
+fishcrack ~/rockyou SHA3-512 48f4892c4227b737630fe6af9e69592f999849d2c5bfb0f02950c3040605245292880bdf169fcc3fb147a808435d6dbbb6d124c2a4c1242602230c00a20816bc
 🐠 fishcrack v0.1
-Loaded MD5 hash.
-loaded the wordlist file in 342 millisecs.
-🤍 Cracked! f25a2fc72690b780b2a14e140ef6a9e0 -> "iloveyou" in 0 millisecs
-
-fishcrack ~/rockyou SHA3-512 e9a75486736a550af4fea861e2378305c4a555a05094dee1dca2f68afea49cc3a50e8de6ea131ea521311f4d6fb054a146e8282f8e35ff2e6368c1a62e909716
-🐠 fishcrack v0.1
-Loaded SHA3-512 hash.
-loaded the wordlist file in 335 millisecs.
-🤍 Cracked! e9a75486736a550af4fea861e2378305c4a555a05094dee1dca2f68afea49cc3a50e8de6ea131ea521311f4d6fb054a146e8282f8e35ff2e6368c1a62e909716 -> "password" in 0 millisecs
+Loaded the wordlist file in 383 millisecs.
+-------------------------------------------------------
+💛 Cracked! 🔑 securepassword ⏳ 1651 millisecs
+-------------------------------------------------------
 ```
 #### --spray
 ```
-fishcrack ~/rockyou --spray e21a255ec884c1287320227b0c915ed8c34ee45ba5828d0fa85d6b8984aace8d7b12e5904af84a457be8bfa0941eef84f40b03ad12b4edc7f0bfc092b59b5419
+ fishcrack ~/rockyou --spray 48f4892c4227b737630fe6af9e69592f999849d2c5bfb0f02950c3040605245292880bdf169fcc3fb147a808435d6dbbb6d124c2a4c1242602230c00a20816bc
 🐠 fishcrack v0.1
-Loaded the wordlist file in 322 millisecs.
+Loaded the wordlist file in 388 millisecs.
 Now spraying! Attempting all hash algorithms.
-🤍 Cracked! e21a255ec884c1287320227b0c915ed8c34ee45ba5828d0fa85d6b8984aace8d7b12e5904af84a457be8bfa0941eef84f40b03ad12b4edc7f0bfc092b59b5419 -> "donkey" in 4490 millisecs
+-------------------------------------------------------
+💛 Cracked! 🔑 securepassword ⏳ 28940 millisecs
+-------------------------------------------------------
 ```
