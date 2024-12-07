@@ -87,8 +87,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     ];
 
     let start_time = Instant::now();
-    let file_content = fs::read_to_string(wordlist_file)?;
-    let dict: Vec<&str> = file_content.lines().collect();
+    let file_content = fs::read(wordlist_file)?;
+    let valid_content = String::from_utf8_lossy(&file_content);
+    let dict: Vec<&str> = valid_content.lines().collect();
 
     unsafe {
         LOAD_TIME = start_time.elapsed().as_millis();
