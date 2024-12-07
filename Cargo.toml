@@ -1,7 +1,7 @@
 [package]
 name = "fishcrack"
 version = "0.1.0"
-edition = "2024"
+edition = "2018"
 authors = ["DaddyBigFish"]
 description = "Hash cracking written in rust."
 repository = "https://github.com/DaddyBigFish/fishcrack.git"
