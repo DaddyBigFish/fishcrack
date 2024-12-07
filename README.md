@@ -1,5 +1,5 @@
 ## Introduction
-![image](https://github.com/user-attachments/assets/1c549bbc-a15c-478c-8c12-c44d1fc48b1d)
+![81-813291_22294-tropical-fish-icon-yellow-fish-emoji (1)](https://github.com/user-attachments/assets/f86f9c36-560c-4664-a253-ee60c7aad136)    
 Rust hash cracker inspired by the project Ruo.
 
 ## Supported hashes
