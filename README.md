@@ -1,5 +1,5 @@
 ## Introduction
-Rust hash cracker inspired by the GitHub project Ruo.
+Rust hash cracker inspired by the project Ruo.
 
 ## Supported hashes
 | Name        | Algorithm  | Crate     | Version   | Crates.io |
