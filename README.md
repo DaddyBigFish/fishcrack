@@ -1,4 +1,5 @@
 ## Introduction
+![image](https://github.com/user-attachments/assets/9badf4a0-e7d7-428d-9574-1f30e82bb143)
 Rust hash cracker inspired by the project Ruo.
 
 ## Supported hashes
