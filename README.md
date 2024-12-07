@@ -26,6 +26,6 @@ Rust hash cracker based on the GitHub project Ruo.
 git clone https://github.com/DaddyBigFish/fishcrack.git ~/.git/fishcrack
 cd ~/.git/fishcrack
 cargo build --release
-sudo ln -sf $(realpath ~/.git/fishcrack/target/release/ruo) /usr/local/bin/fishcrack
+sudo ln -sf $(realpath ~/.git/fishcrack/target/release/fishcrack) /usr/local/bin/fishcrack
 chmod +x /usr/local/bin/fishcrack
 ```
