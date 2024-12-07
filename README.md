@@ -1,7 +1,7 @@
 ## Introduction
 ![81-813291_22294-tropical-fish-icon-yellow-fish-emoji (1)](https://github.com/user-attachments/assets/f86f9c36-560c-4664-a253-ee60c7aad136)    
 
-**fishcrack** the hash cracker written in Rust.
+𝗳𝗶𝘀𝗵𝗰𝗿𝗮𝗰𝗸 the hash cracker written in Rust.
 
 ## Supported hashes
 | Name        | Algorithm  | Crate     | Version   | Crates.io |
