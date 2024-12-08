@@ -40,10 +40,13 @@ fn crack(line: &str, hash_type: &str, start_time: Instant, cracked: &Arc<AtomicB
     if formatted_hash == *HASH_INPUT {
         unsafe {
             println!(
-                "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
-                💛 Cracked!   🔑 {}   ⏳ {} millisecs\n\
-                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
-                line, start_time.elapsed().as_millis() - LOAD_TIME
+                "💛 Cracked! That took {} millisecs.\n\
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+                {:>22}🔑 {}\n\
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+                start_time.elapsed().as_millis() - LOAD_TIME,
+                "",
+                line
             );
         }
         cracked.store(true, Ordering::SeqCst);
@@ -99,14 +102,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     unsafe {
         LOAD_TIME = start_time.elapsed().as_millis();
-        println!("Loaded the wordlist file in {} millisecs.", LOAD_TIME);
+        println!("⚫ Loaded the wordlist file in {} millisecs.", LOAD_TIME);
     }
 
     let results = Arc::new(RwLock::new(Vec::new()));
     let cracked = Arc::new(AtomicBool::new(false));
 
     if is_spray_mode {
-        println!("Now spraying! Attempting all hash algorithms.");
+        println!("⚫ Now spraying! Attempting all hash algorithms.");
 
         let input_hash_length = HASH_INPUT.len();
         let valid_hashes = valid_hash_lengths
@@ -120,7 +123,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             process::exit(1);
         }
 
-        println!("Filtered algorithms for length {}: {:?}", input_hash_length, valid_hashes);
+        println!("⚫ Filtered algorithms for length {}: {:?}", input_hash_length, valid_hashes);
 
         valid_hashes.par_iter().for_each(|hash_type| {
             dict.par_iter().for_each(|line| {
