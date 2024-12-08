@@ -54,8 +54,7 @@ fn crack(line: &str, hash_type: &str, start_time: Instant, cracked: &Arc<AtomicB
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-	// let num_threads = //num_cpus::get();
-    ThreadPoolBuilder::new().num_threads(64).build_global().map_err(|e| {
+    ThreadPoolBuilder::new().num_threads(50).build_global().map_err(|e| {
         std::io::Error::new(std::io::ErrorKind::Other, e)
     })?;
 
@@ -82,9 +81,15 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         process::exit(0);
     }
 
-    let valid_hashes = vec![
-        "MD2", "MD4", "MD5", "SHA-1", "RipeMD-128", "RipeMD-160", "RipeMD-256", "RipeMD-320",
-        "SHA-224", "SHA-256", "SHA-384", "SHA-512", "SHA3-224", "SHA3-256", "SHA3-384", "SHA3-512",
+    // Define valid hash lengths for filtering
+    let valid_hash_lengths = vec![
+        (32, vec!["MD2", "MD4", "MD5", "MD6-128", "RIPEMD-128"]),
+        (40, vec!["RIPEMD-160", "SHA-1"]),
+        (56, vec!["SHA-224", "SHA3-224"]),
+        (64, vec!["MD6-256", "RIPEMD-256", "SHA-256", "SHA3-256"]),
+        (80, vec!["RIPEMD-320"]),
+        (96, vec!["SHA-384", "SHA3-384"]),
+        (128, vec!["MD6-512", "SHA-512", "SHA3-512"]),
     ];
 
     let start_time = Instant::now();
@@ -102,19 +107,34 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     if is_spray_mode {
         println!("Now spraying! Attempting all hash algorithms.");
-		valid_hashes.par_iter().for_each(|hash_type| {
-			dict.par_iter().for_each(|line| {
-				if !cracked.load(Ordering::SeqCst) {
-				    if let Some(result) = crack(line, hash_type, start_time, &cracked) {
-				        let mut res = results.write().unwrap();
-				        res.push(result);
-				    }
-				}
-			});
-		});
+
+        let input_hash_length = HASH_INPUT.len();
+        let valid_hashes = valid_hash_lengths
+            .iter()
+            .find(|(length, _)| *length == input_hash_length)
+            .map(|(_, hashes)| hashes.clone())
+            .unwrap_or_else(Vec::new);
+
+        if valid_hashes.is_empty() {
+            println!("❌ No hash algorithms found matching length {}!", input_hash_length);
+            process::exit(1);
+        }
+
+        println!("Filtered algorithms for length {}: {:?}", input_hash_length, valid_hashes);
+
+        valid_hashes.par_iter().for_each(|hash_type| {
+            dict.par_iter().for_each(|line| {
+                if !cracked.load(Ordering::SeqCst) {
+                    if let Some(result) = crack(line, hash_type, start_time, &cracked) {
+                        let mut res = results.write().unwrap();
+                        res.push(result);
+                    }
+                }
+            });
+        });
     } else {
         let hash_type = HASH_NAME.as_str();
-        if !valid_hashes.contains(&hash_type) {
+        if !valid_hash_lengths.iter().any(|(_, hashes)| hashes.contains(&hash_type)) {
             println!("❌ Invalid hash name!");
             process::exit(1);
         }
