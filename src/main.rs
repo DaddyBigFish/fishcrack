@@ -43,7 +43,8 @@ fn crack(line: &str, hash_type: &str, start_time: Instant, cracked: &Arc<AtomicB
                 "💛 Cracked! That took {} millisecs.\n\
                 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
                 {:>22}🔑 {}\n\
-                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+                \n\
+                ",
                 start_time.elapsed().as_millis() - LOAD_TIME,
                 "",
                 line
@@ -123,7 +124,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             process::exit(1);
         }
 
-        println!("⚫ Filtered algorithms for length {}: {:?}", input_hash_length, valid_hashes);
+        println!("⚫ Attempting length {}: {:?}", input_hash_length, valid_hashes);
 
         valid_hashes.par_iter().for_each(|hash_type| {
             dict.par_iter().for_each(|line| {
