@@ -40,10 +40,10 @@ fn crack(line: &str, hash_type: &str, start_time: Instant, cracked: &Arc<AtomicB
     if formatted_hash == *HASH_INPUT {
         unsafe {
             println!(
-                "🤍 Cracked! {} -> \"{}\" in {} millisecs",
-                formatted_hash,
-                line,
-                start_time.elapsed().as_millis() - LOAD_TIME
+                "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\
+                💛 Cracked!   🔑 {}   ⏳ {} millisecs\n\
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+                line, start_time.elapsed().as_millis() - LOAD_TIME
             );
         }
         cracked.store(true, Ordering::SeqCst);
@@ -54,6 +54,7 @@ fn crack(line: &str, hash_type: &str, start_time: Instant, cracked: &Arc<AtomicB
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
+	// let num_threads = //num_cpus::get();
     ThreadPoolBuilder::new().num_threads(64).build_global().map_err(|e| {
         std::io::Error::new(std::io::ErrorKind::Other, e)
     })?;
