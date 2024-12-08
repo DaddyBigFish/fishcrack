@@ -48,10 +48,10 @@ fishcrack ~/rockyou SHA3-512 48f4892c4227b737630fe6af9e69592f999849d2c5bfb0f0295
  fishcrack ~/rockyou --spray 48f4892c4227b737630fe6af9e69592f999849d2c5bfb0f02950c3040605245292880bdf169fcc3fb147a808435d6dbbb6d124c2a4c1242602230c00a20816bc
 
 ━━━━━━━━━━━━━━━━━━━━━━ 🐠 fishcrack v0.1 ━━━━━━━━━━━━━━━━━━━━━━
-⚫ Loaded the wordlist file in 378 millisecs.
+⚫ Loaded the wordlist file in 379 millisecs.
 ⚫ Now spraying! Attempting all hash algorithms.
-⚫ Filtered algorithms for length 128: ["MD6-512", "SHA-512", "SHA3-512"]
-💛 Cracked! That took 1511 millisecs.
+⚫ Attempting length 128: ["MD6-512", "SHA-512", "SHA3-512"]
+💛 Cracked! That took 3324 millisecs.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                       🔑 securepassword
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
